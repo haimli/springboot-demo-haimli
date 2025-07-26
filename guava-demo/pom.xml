@@ -12,14 +12,49 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <google-java-format.version>1.28.0</google-java-format.version>
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>33.4.8-jre</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+    <!--    <dependency>-->
+    <!--      <groupId>com.google.googlejavaformat</groupId>-->
+    <!--      <artifactId>google-java-format</artifactId>-->
+    <!--      <version>${google-java-format.version}</version>-->
+    <!--    </dependency>-->
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>2.43.0</version> <!-- 使用最新版本 -->
+        <configuration>
+          <java>
+            <googleJavaFormat>
+              <version>1.28.0</version> <!-- 指定 google-java-format 版本 -->
+              <style>GOOGLE</style>
+            </googleJavaFormat>
+            <removeUnusedImports/>
+            <formatAnnotations/>
+          </java>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
